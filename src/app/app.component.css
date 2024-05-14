@@ -4,7 +4,7 @@
     width: 350px;
     min-width: 230px;
     min-height: calc(100vh - 70px);
-    background-color: #113c60;
+    background-color: #cd0429;
     color: #fff;
     
     box-shadow: 5px 5px 5px #939393;
@@ -22,41 +22,49 @@
   justify-content: space-between;
 }
 .navbar {
-  background-color: #ca1435; /* Dark gray background */
-  padding: 0.5rem 1rem; /* Padding for aesthetic spacing */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for a bit of depth */
-
+  background-color: #ffffff; /* Dark blue background */
+  padding: 0.5rem 1rem; /* Uniform padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow */
 }
 
 .navbar-brand {
-  font-weight: bold; /* Makes the brand name bolder */
-  font-size: 1.25rem; /* Slightly larger font size for the brand */
-  color: #f8f9fa !important; /* Ensures the brand text is white, override default */
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #000000 !important; /* White text for brand */
 }
 
-.navbar-nav .nav-item .nav-link {
-  color: #f8f9fa !important; /* Ensures the navigation links are white */
-  margin-right: 1rem; /* Spacing between navigation links */
-  transition: color 0.3s; /* Smooth transition for hover effect */
+.navbar-nav {
+  display: flex; /* Ensures items are lined up horizontally */
 }
 
-.navbar-nav .nav-item .nav-link:hover,
-.navbar-nav .nav-item .nav-link:focus {
-  color: #1abc9c !important; /* Change color on hover/focus to teal */
-  text-decoration: none; /* Removes underline on hover/focus */
+.nav-item {
+  margin-right: 1rem; /* Space between nav items */
+}
+
+.nav-link {
+  color: #000000 !important; /* White text for links */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #1abc9c !important; /* Teal on hover/focus */
 }
 
 /* Responsive adjustments */
 @media (max-width: 576px) {
-  .navbar {
-    padding: 0.5rem; /* Reduce padding on smaller screens */
+  .navbar-nav {
+    flex-direction: column; /* Stack items vertically on small screens */
   }
 
-  .navbar-nav .nav-item {
-    margin-bottom: 0.5rem; /* Adds bottom margin for vertical layout */
-  }
-
-  .navbar-nav .nav-item .nav-link {
-    margin-right: 0; /* Removes right margin on smaller screens */
+  .nav-item {
+    margin-right: 0; /* No horizontal margin on small screens */
+    margin-bottom: 0.5rem; /* Adds spacing between items */
   }
 }
+
+.main-container {
+  display: flex;
+  min-height: calc(100vh - 70px); /* Full height minus navbar */
+}
+

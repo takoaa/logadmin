@@ -5,14 +5,13 @@
 .nav-item {
   padding: 25px 50px;
   cursor: pointer;
-  background-color: #060145;
+  background-color: #cd0429;
   border-bottom: 1px solid #ccc;
 }
 
 .nav-item:hover {
-  background-color: rgb(1, 38, 69);
+  background-color: #78686a;/* Slightly darker red for hover effect */
 }
-
 .nav-item div {
   display: none; /* Hide the dropdown by default */
   padding: 5px 0;
@@ -46,5 +45,8 @@
 a {
   border: none;
   color: rgb(13, 13, 13);
-  background-color: #060145;
+  background-color: #cd0429;;
+}
+.nav-item fa-icon {
+  margin-right: 10px;  /* More specific rule */
 }

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       this.service.login(this.loginForm.value).subscribe(
         (response: { jwt: string }) => {
           if (response.jwt) {
-            alert(`Hello, your token is ${response.jwt}`);
+            // alert(`Hello, your token is ${response.jwt}`);
             localStorage.setItem('jwt', response.jwt);
             this.router.navigateByUrl('/main');
           }

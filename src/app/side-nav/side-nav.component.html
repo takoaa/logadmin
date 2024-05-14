@@ -1,43 +1,37 @@
-<div class="nav-items">
-  <div class="nav-item" (click)="toggleChildren($event)">
-    <span>Configurations</span>
-    <div *ngIf="showChildren" class="btn">
-      <button class="nav-child" (click)="toggleSubmenu($event, 'workplan'); $event.stopPropagation()">Plan de
-        travail</button>
-      <div *ngIf="showSubmenu['workplan']">
-        <!-- Stop propagation and prevent default to maintain menu state -->
-        <a class="nav-child btn" (click)="navigate('/matiere', $event)">Matière</a>
-        <a routerLink="/Formes" class="nav-child btn" (click)="$event.stopPropagation()">Formes</a>
-        <a routerLink="/decors" class="nav-child btn" (click)="$event.stopPropagation()">Décors</a>
+<div class="app-container">
+  <div class="nav-items">
+    <div class="nav-item">
+      <fa-icon [icon]="faTachometerAlt"></fa-icon>
+      <span routerLink="/main">tableau de bord</span>
+    </div>
 
+    <!-- Configuration menu item -->
+    <div class="nav-item" (click)="toggleChildren($event)">
+      <fa-icon [icon]="faCog"></fa-icon> <span>Configurations</span>
+      <div *ngIf="showChildren" class="btn">
+        <button class="nav-child" (click)="toggleSubmenu($event, 'workplan'); $event.stopPropagation()">
+          <fa-icon [icon]="faWrench"></fa-icon> Plan de travail
+        </button>
+        <div *ngIf="showSubmenu['workplan']">
+          <a class="nav-child btn" (click)="navigate('/matiere', $event)">
+            <fa-icon [icon]="faCircle"></fa-icon> Matière
+          </a>
+          <a routerLink="/Formes" class="nav-child btn" (click)="$event.stopPropagation()">
+            <fa-icon [icon]="faShapes"></fa-icon> Formes
+          </a>
+          <a routerLink="/decors" class="nav-child btn" (click)="$event.stopPropagation()">
+            <fa-icon [icon]="faPaintRoller"></fa-icon> Décors
+          </a>
+        </div>
       </div>
     </div>
+
+    <!-- Additional navigation items -->
+    <div class="nav-item">
+      <fa-icon [icon]="faPhone"></fa-icon> <span>Contact</span>
+    </div>
+    <div class="nav-item">
+      <fa-icon [icon]="faQuestionCircle"></fa-icon> <span>Help</span>
+    </div>
   </div>
-</div>
-
-
-<div class="nav-item">
-
-  <span>Produits</span>
-</div>
-<div class="nav-item">
-
-  <span>Commandes</span>
-</div>
-
-<div class="nav-item">
-
-  <span>Sales</span>
-</div>
-<div class="nav-item">
-
-  <span>Statistics</span>
-</div>
-<div class="nav-item">
-
-  <span>Contact</span>
-</div>
-<div class="nav-item">
-
-  <span>Help</span>
 </div>

@@ -1,24 +1,34 @@
-<p>ajout-materiau works!</p>
 <div class="product-form">
-    <h2>Ajouter un nouveau materiau</h2>
+    <h2>Ajouter un nouveau matériau</h2>
     <form>
+        <label for="name">Nom:</label>
+        <input type="text" id="name" name="name">
 
-        <div>
-            <label for="nom">Nom:</label>
-            <input id="nom" name="nom" required>
-        </div>
-        <div>
-            <label for="epaisseur">Epaisseur</label>
-            <input id="epaisseur" type="number" name="epaisseur" required>
-        </div>
+        <label for="thickness">Epaisseur:</label>
+        <input type="text" id="thickness" name="thickness">
 
-        <div>
-            <!-- <label for="avatar">Choisir un dossier:</label> -->
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="type1">Type 1</option>
+            <option value="type2">Type 2</option>
+        </select>
 
-            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+        <label for="brilliance">Brillance:</label>
+        <input type="text" id="brilliance" name="brilliance">
 
-        </div>
-        <button type="submit">Ajouter </button>
-        <button (click)="closeDialog()">Close</button>
+        <label for="unit">Unité:</label>
+        <input type="text" id="unit" name="unit">
+
+        <label for="feature">Caractéristique:</label>
+        <input type="text" id="feature" name="feature">
+
+        <label for="tariff">Code de tarif:</label>
+        <input type="text" id="tariff" name="tariff">
+
+        <label for="option">Face option:</label>
+        <input type="text" id="option" name="option">
+
+        <button type="submit">Ajouter</button>
+        <button type="button" (click)="closeDialog()">Annuler</button>
     </form>
 </div>

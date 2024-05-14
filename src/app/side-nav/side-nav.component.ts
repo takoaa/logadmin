@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router'; // Import Router
+import { JwtService } from '../jwt.service'; // Adjust the path based on your project structure
+import { faTachometerAlt, faWrench, faCircle, faShapes, faPaintRoller, faPhone, faQuestionCircle, faCog } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core'; // Import IconProp
+
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.css']
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit {
+  faTachometerAlt: IconProp = faTachometerAlt;
+  faWrench: IconProp = faWrench;
+  faCircle: IconProp = faCircle;
+  faShapes: IconProp = faShapes;
+  faPaintRoller: IconProp = faPaintRoller;
+  faPhone: IconProp = faPhone;
+  faQuestionCircle: IconProp = faQuestionCircle;
+  faCog: IconProp = faCog; // Properly typed now
   showChildren: boolean = false;
   showSubmenu: { [key: string]: boolean } = {};
+  message: string | undefined;
 
-  constructor(private router: Router) {}
 
-  // Navigation method to be called on click with routerLink alternatives
+
+  constructor(private router: Router, private service: JwtService) {}
+
+  ngOnInit(): void {
+    this.hello(); // Call hello function on initialization
+  }
+
+  // Navigation method to be called on click, replaces routerLink alternatives
   navigate(path: string, event: MouseEvent): void {
     event.stopPropagation(); // Prevents the menu from collapsing
     this.router.navigate([path]); // Navigate programmatically
@@ -44,5 +62,17 @@ export class SideNavComponent {
   childClicked(event: MouseEvent): void {
     console.log('Child button clicked');
     event.stopPropagation(); // Stops the click from triggering toggleChildren
+  }
+
+  hello(): void {
+    this.service.hello().subscribe(
+      (response) => {
+        console.log(response);
+        this.message = response.message;
+      },
+      (error) => {
+        console.error('Error occurred:', error);
+      }
+    );
   }
 }
