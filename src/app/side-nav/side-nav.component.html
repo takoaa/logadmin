@@ -1,0 +1,43 @@
+<div class="nav-items">
+  <div class="nav-item" (click)="toggleChildren($event)">
+    <span>Configurations</span>
+    <div *ngIf="showChildren" class="btn">
+      <button class="nav-child" (click)="toggleSubmenu($event, 'workplan'); $event.stopPropagation()">Plan de
+        travail</button>
+      <div *ngIf="showSubmenu['workplan']">
+        <!-- Stop propagation and prevent default to maintain menu state -->
+        <a class="nav-child btn" (click)="navigate('/matiere', $event)">Matière</a>
+        <a routerLink="/Formes" class="nav-child btn" (click)="$event.stopPropagation()">Formes</a>
+        <a routerLink="/decors" class="nav-child btn" (click)="$event.stopPropagation()">Décors</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="nav-item">
+
+  <span>Produits</span>
+</div>
+<div class="nav-item">
+
+  <span>Commandes</span>
+</div>
+
+<div class="nav-item">
+
+  <span>Sales</span>
+</div>
+<div class="nav-item">
+
+  <span>Statistics</span>
+</div>
+<div class="nav-item">
+
+  <span>Contact</span>
+</div>
+<div class="nav-item">
+
+  <span>Help</span>
+</div>

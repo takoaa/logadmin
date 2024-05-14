@@ -1,0 +1,42 @@
+<div *ngIf="isVisible">
+    <div class="container">
+        <div class="product-list">
+            <h3>Liste des matières disponibles</h3>
+            <button (click)="openDialog()" class="ajouter">Ajouter</button>
+            <table>
+                <thead>
+                    <tr class="attributs">
+                        <th class="nom">Nom</th>
+                        <th class="epaisseur">Epaisseur</th>
+                        <th>Image</th>
+                        <th>Actions</th> <!-- Actions column header -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="materiaux$ | async as materiaux; else noData">
+                        <tr *ngFor="let materiau of materiaux" class="attributs">
+                            <td>{{ materiau.nom }}</td>
+                            <td>{{ materiau.epaisseur }}</td>
+                            <td>
+                                <img *ngIf="materiau.avatar" [src]="materiau.avatar" alt="Image de {{ materiau.nom }}"
+                                    width="50">
+                                <!-- Image display with alt text and check for image existence -->
+                            </td>
+                            <td class="action-buttons">
+                                <!-- Simple buttons for actions without nested loop -->
+                                <button (click)="updateMatiere(materiau)">Modifier</button>
+                                <button *ngIf="materiau.id !== undefined"
+                                    (click)="deleteMatiere(materiau.id)">Supprimer</button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                        <tr>
+                            <td colspan="4">Aucun matériau disponible.</td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

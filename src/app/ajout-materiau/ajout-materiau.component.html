@@ -1,0 +1,24 @@
+<p>ajout-materiau works!</p>
+<div class="product-form">
+    <h2>Ajouter un nouveau materiau</h2>
+    <form>
+
+        <div>
+            <label for="nom">Nom:</label>
+            <input id="nom" name="nom" required>
+        </div>
+        <div>
+            <label for="epaisseur">Epaisseur</label>
+            <input id="epaisseur" type="number" name="epaisseur" required>
+        </div>
+
+        <div>
+            <!-- <label for="avatar">Choisir un dossier:</label> -->
+
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+
+        </div>
+        <button type="submit">Ajouter </button>
+        <button (click)="closeDialog()">Close</button>
+    </form>
+</div>

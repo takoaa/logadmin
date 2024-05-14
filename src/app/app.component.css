@@ -1,0 +1,62 @@
+.main-container {
+  display: flex;
+  .side-nav {
+    width: 350px;
+    min-width: 230px;
+    min-height: calc(100vh - 70px);
+    background-color: #113c60;
+    color: #fff;
+    
+    box-shadow: 5px 5px 5px #939393;
+    @media only screen and (max-width: 1300px) {
+      width: 100px;
+      min-width: 100px;
+    }
+  }
+  .main {
+    padding: 30px;
+  }
+}
+.container{
+  display:flex;
+  justify-content: space-between;
+}
+.navbar {
+  background-color: #ca1435; /* Dark gray background */
+  padding: 0.5rem 1rem; /* Padding for aesthetic spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for a bit of depth */
+
+}
+
+.navbar-brand {
+  font-weight: bold; /* Makes the brand name bolder */
+  font-size: 1.25rem; /* Slightly larger font size for the brand */
+  color: #f8f9fa !important; /* Ensures the brand text is white, override default */
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #f8f9fa !important; /* Ensures the navigation links are white */
+  margin-right: 1rem; /* Spacing between navigation links */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+  color: #1abc9c !important; /* Change color on hover/focus to teal */
+  text-decoration: none; /* Removes underline on hover/focus */
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .navbar {
+    padding: 0.5rem; /* Reduce padding on smaller screens */
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem; /* Adds bottom margin for vertical layout */
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    margin-right: 0; /* Removes right margin on smaller screens */
+  }
+}
