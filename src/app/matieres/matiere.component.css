@@ -1,0 +1,132 @@
+.product-list {
+    width: 100%; /* Full width of the viewport or its parent container */
+    max-width: none; /* Removes the max-width restriction */
+    min-height: 200px;
+    margin: 23px; /* Adjust or remove margin if necessary */
+    padding: 23px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #fffefe; /* Check for correct color visibility */
+    border-radius: 20px;
+    width: 95%; /* Adjust width to fit content without horizontal scrolling */
+    max-width: 95%; /* You might want to adjust or remove this depending on your layout needs */
+}
+
+.product-list:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.product-list table {
+    width: 100%; /* Ensure the table uses full width of its container */
+    border-collapse: collapse; /* Optional: ensures borders between cells are shared */
+}
+
+.product-list th, .product-list td {
+    text-align: center; /* Centers text horizontally */
+    vertical-align: middle; /* Centers text vertically */
+    padding: 8px; /* Adds padding around text */
+}
+
+/* If your table headers (th) need specific styling */
+.product-list th {
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333; /* Dark text for better readability */
+    font-weight: bold; /* Makes header text bold */
+}
+
+
+
+
+
+h3 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%; /* Ensure full width within container */
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+li:hover {
+    background-color: #eaeaea;
+}
+
+.attributs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Ensure there's space between columns */
+    color: #857d7d;
+}
+
+.nom:hover, .epaisseur:hover {
+    text-decoration: underline;
+    color: #1d56ff;
+}
+
+.modifier:hover, .supprimer:hover {
+    text-decoration: underline;
+}
+/* General hover effect for all cells */
+.product-list td, .product-list th {
+    transition: background-color 0.2s ease-in-out; /* Smooth transition for background color */
+}
+
+.product-list td:hover, .product-list th:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+/* Specific hover effects for text */
+.nom:hover, .epaisseur:hover, .Type:hover, .Brillance:hover, .Unité:hover, .Caractéristique:hover, .Code de tarif:hover, .face option:hover {
+    text-decoration: underline;
+    color: #1d56ff; /* Blue color on hover for text */
+}
+
+/* Button hover effects */
+.modifier:hover, .supprimer:hover, .ajouter:hover {
+    background-color: #1d56ff; /* Blue background on hover for buttons */
+    color: #ffffff; /* White text color for readability */
+    text-decoration: none; /* No underline for buttons */
+}
+
+
+button {
+    cursor: pointer;
+    font-size: 15px;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+    border: none;
+    text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    transition: background-color 0.2s ease;
+}
+
+.ajouter {
+    background-color: #5d89a2;
+    color: #f9f7f7;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0;
+    width: 150px;
+    height: 40px;
+}
