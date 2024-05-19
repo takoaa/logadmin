@@ -9,7 +9,7 @@ import { JwtService } from '../jwt.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;  // No longer potentially undefined
-
+  errorMessage: string = '';
   constructor(
     private service: JwtService,
     private fb: FormBuilder
@@ -38,13 +38,18 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log(this.registerForm.value);
-    this.service.register(this.registerForm.value).subscribe(
-      (response) => {
-        if (response.id != null) {
-          alert("Hello " + response.name);
+    if (this.registerForm.valid) {
+      this.service.register(this.registerForm.value).subscribe(
+        (response) => {
+          if (response.id != null) {
+            alert("Hello " + response.name);
+          }
+        },
+        (error: any) => {
+          this.errorMessage = 'Compte existe.';
+          console.error('Registration failed:', error);
         }
-      }
-    );
+      );
+    }
   }
 }

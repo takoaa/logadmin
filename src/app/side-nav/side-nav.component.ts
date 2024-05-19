@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router'; // Import Router
 import { JwtService } from '../jwt.service'; // Adjust the path based on your project structure
-import { faTachometerAlt, faWrench, faCircle, faShapes, faPaintRoller, faPhone, faQuestionCircle, faCog,faHome  } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faWrench, faCircle, faShapes, faPaintRoller, faPhone, faQuestionCircle, faCog  } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core'; // Import IconProp
 
 @Component({
@@ -18,7 +18,7 @@ export class SideNavComponent implements OnInit {
   faPhone: IconProp = faPhone;
   faQuestionCircle: IconProp = faQuestionCircle;
   faCog: IconProp = faCog; // Properly typed now
-  faHome: IconProp = faHome; // Add faHome icon
+
   showChildren: boolean = false;
   showSubmenu: { [key: string]: boolean } = {};
   message: string | undefined;
@@ -75,5 +75,9 @@ export class SideNavComponent implements OnInit {
         console.error('Error occurred:', error);
       }
     );
+  }
+  navigateToDashboard(): void {
+    // Trigger a full page reload
+    window.location.href = '/dashboard';
   }
 }

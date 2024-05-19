@@ -10,7 +10,7 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" formControlName="password" />
         </div>
-
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
         <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
     </form>
 </div>

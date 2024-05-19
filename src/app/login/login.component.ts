@@ -10,7 +10,7 @@ import { JwtService } from '../jwt.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-
+  errorMessage: string = '';
   constructor(
     private fb: FormBuilder,
     private service: JwtService,
@@ -23,19 +23,17 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
-
   submitForm(): void {
     if (this.loginForm.valid) {
-      // Explicitly type parameters
       this.service.login(this.loginForm.value).subscribe(
         (response: { jwt: string }) => {
           if (response.jwt) {
-            // alert(`Hello, your token is ${response.jwt}`);
             localStorage.setItem('jwt', response.jwt);
             this.router.navigateByUrl('/dashboard');
           }
         },
         (error: any) => {
+          this.errorMessage = 'Authentification échouée.';
           console.error('Login failed:', error);
         }
       );

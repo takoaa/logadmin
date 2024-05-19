@@ -48,7 +48,7 @@ export class DatamatService {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post(`${this.apiUrl}/upload`, formData).pipe(
-      catchError(this.handleError.bind(this))
+      
     );
   }
   private handleError(error: HttpErrorResponse) {

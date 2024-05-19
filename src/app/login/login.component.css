@@ -66,4 +66,7 @@ button {
 .btn-primary.disabled {
     background-color: #b3d7ff;
     border-color: #b3d7ff;
-}
+}.error-message {
+    color: red;
+    margin-top: 0px;
+  }
