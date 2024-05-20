@@ -18,46 +18,50 @@ export class MatiereComponent implements OnInit {
   isVisible: boolean = true;  // This is used to show or hide parts of your template
   selectedFile: File | null = null;
 
+  materiaux: Materiau[] = [];
 
   constructor(
     private datamatService: DatamatService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar,
-    private route: ActivatedRoute,
-    private router: Router
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.loadInitialData();
   }
-  deleteMatiere(id: number): void {
-    this.datamatService.deleteMaterial(id).subscribe({
-      next: () => {
-        this.snackBar.open('Material deleted successfully', 'Close', { duration: 1000 });
-        this.loadInitialData();
-      },
-      error: error => this.snackBar.open('Failed to delete material: ' + error.message, 'Close', { duration: 1000 })
-    });
-  }
-  openDialog(materiau?: Materiau): void {
+  loadInitialData(): void {
+    this.materiaux$ = this.datamatService.getAllMatieres();
+  }  openDialog(materiau?: Materiau): void {
     const dialogRef = this.dialog.open(AjoutMateriauComponent, {
       width: '250px',
-      data: { matiere: materiau || this.createNewMateriau() }
+      data: { materiau: materiau || this.createNewMateriau() }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.saveMateriau(result);
+        this.loadInitialData();  // Refresh the list if there was a change
       }
     });
   }
 
   createNewMateriau(): Materiau {
-    return { id: undefined, name: '', type: '', thicknessOptions: '', codeTar: '', brilliance: '', unit: '', characteristics: '', faceOptions: '' };
+    return {
+      id: undefined, // or null, if your backend supports it
+      name: '',
+      type: '',
+      thicknessOptions: '',
+      codeTar: '',
+      brilliance: '',
+      unit: '',
+      characteristics: '',
+      faceOptions: ''
+    };
   }
 
+  
+
   updateMatiere(materiau: Materiau): void {
-    this.saveMateriau(materiau);
+    this.openDialog(materiau);  // Opens the dialog with existing material data
   }
 
   onFileSelected(event: any): void {
@@ -74,20 +78,29 @@ export class MatiereComponent implements OnInit {
       this.snackBar.open('No file selected', 'Close', { duration: 3000 });
     }
   }
-  saveMateriau(materiau: Materiau): void {
-    const operation = materiau.id ? 
-      this.datamatService.updateMateriau(materiau.id, materiau) :
-      this.datamatService.addMateriau(materiau);
-    
-    operation.subscribe({
-      next: (res) => {
-        this.snackBar.open('Material saved successfully', 'Close', { duration: 2000 });
-        this.loadInitialData();  // Reload data to refresh the list
+
+   deleteMatiere(id: number): void {
+    this.datamatService.deleteMaterial(id).subscribe({
+      next: () => {
+        this.snackBar.open('Material deleted successfully', 'Close', { duration: 1000 });
+        this.loadInitialData();
       },
-      error: (error) => this.snackBar.open('Failed to save material: ' + error.message, 'Close', { duration: 2000 })
+      error: error => this.snackBar.open('Failed to delete material: ' + error.message, 'Close', { duration: 1000 })
     });
   }
-  loadInitialData(): void {
-    this.materiaux$ = this.datamatService.getAllMatieres();
-  }
+
+
+saveMateriau(materiau: Materiau): void {
+  const operation = materiau.id ? 
+    this.datamatService.updateMateriau(materiau.id, materiau) :
+    this.datamatService.addMateriau(materiau);
+  
+  operation.subscribe({
+    next: (res) => {
+      this.snackBar.open('Material saved successfully', 'Close', { duration: 2000 });
+      this.loadInitialData();  // Reload data to refresh the list
+    },
+    error: (error) => this.snackBar.open('Failed to save material: ' + error.message, 'Close', { duration: 2000 })
+  });
+}
 }

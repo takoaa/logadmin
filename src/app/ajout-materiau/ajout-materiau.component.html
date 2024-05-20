@@ -1,34 +1,45 @@
 <div class="product-form">
     <h2>Ajouter un nouveau matériau</h2>
-    <form>
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name">
-
-        <label for="thickness">Epaisseur:</label>
-        <input type="text" id="thickness" name="thickness">
-
-        <label for="type">Type:</label>
-        <select id="type" name="type">
-            <option value="type1">Type 1</option>
-            <option value="type2">Type 2</option>
-        </select>
-
-        <label for="brilliance">Brillance:</label>
-        <input type="text" id="brilliance" name="brilliance">
-
-        <label for="unit">Unité:</label>
-        <input type="text" id="unit" name="unit">
-
-        <label for="feature">Caractéristique:</label>
-        <input type="text" id="feature" name="feature">
-
-        <label for="tariff">Code de tarif:</label>
-        <input type="text" id="tariff" name="tariff">
-
-        <label for="option">Face option:</label>
-        <input type="text" id="option" name="option">
-
-        <button type="submit">Ajouter</button>
-        <button type="button" (click)="closeDialog()">Annuler</button>
+    <form (ngSubmit)="submitForm()" #form="ngForm">
+        <h2 mat-dialog-title>{{ data.materiau.id ? 'Edit Material' : 'Add Material' }}</h2>
+        <mat-dialog-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="data.materiau.name" name="name" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <input matInput [(ngModel)]="data.materiau.type" name="type" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Thickness</mat-label>
+                <input matInput [(ngModel)]="data.materiau.thicknessOptions" name="thickness" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Brilliance</mat-label>
+                <input matInput [(ngModel)]="data.materiau.brilliance" name="brilliance" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Unit</mat-label>
+                <input matInput [(ngModel)]="data.materiau.unit" name="unit" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Characteristics</mat-label>
+                <input matInput [(ngModel)]="data.materiau.characteristics" name="characteristics" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Tariff Code</mat-label>
+                <input matInput [(ngModel)]="data.materiau.codeTar" name="codeTar" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Face Options</mat-label>
+                <input matInput [(ngModel)]="data.materiau.faceOptions" name="faceOptions" required>
+            </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button (click)="closeDialog()">Cancel</button>
+            <button mat-raised-button color="primary" type="submit">{{ data.materiau.id ? 'Update' : 'Add' }}</button>
+        </mat-dialog-actions>
     </form>
+
 </div>

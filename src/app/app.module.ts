@@ -21,7 +21,12 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth-service.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +52,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FontAwesomeModule,
     HttpClientModule,
     ChartModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+
+    FormsModule,
+    MatSnackBarModule,
+
   ],
   
   providers: [], 

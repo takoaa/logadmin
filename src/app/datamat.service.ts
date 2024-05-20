@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class DatamatService {
   private apiUrl = 'http://localhost:8081/api/matiere';
 
-  constructor(private http: HttpClient, private router: Router, private jwtService: JwtService) {}
+  constructor(private http: HttpClient, private jwtService: JwtService, private router: Router) {}
 
   getAllMatieres(): Observable<Materiau[]> {
     return this.http.get<Materiau[]>(`${this.apiUrl}/GetAll`, { headers: this.getHeaders() })
@@ -30,8 +30,16 @@ export class DatamatService {
   }
 
   deleteMaterial(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getHeaders() })
+    return this.http.delete(`${this.apiUrl}/deleteOne/${id}`, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError.bind(this)));
+  }
+
+  uploadFile(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.apiUrl}/upload`, formData).pipe(
+      
+    );
   }
 
   private getHeaders(): HttpHeaders {
@@ -44,13 +52,7 @@ export class DatamatService {
     }
     return headers;
   }
-  uploadFile(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.http.post(`${this.apiUrl}/upload`, formData).pipe(
-      
-    );
-  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 401 || error.status === 403) {
       this.jwtService.destroyToken();
@@ -60,5 +62,4 @@ export class DatamatService {
     console.error('API error:', error.message);
     return throwError(() => new Error(`An error occurred: ${error.message}`));
   }
- 
 }
